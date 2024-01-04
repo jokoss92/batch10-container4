@@ -29,8 +29,8 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{
 			"code":     200,
 			"language": "go version go1.20.6",
-			"message":  "Server running on port 8000",
-			"version":  "v5.0",
+			"message":  "Server running on port 8060",
+			"version":  "v6.0",
 		})
 	})
 	r.GET("/env", func(c *gin.Context) {
