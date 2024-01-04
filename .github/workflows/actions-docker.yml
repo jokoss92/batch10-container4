@@ -41,4 +41,5 @@ jobs:
           docker login --username=${{ secrets.DOCKERHUB_USERNAME }} --password=${{ secrets.DOCKERHUB_TOKEN }}
           docker pull johnojss/myapp:${{ github.run_number }}
           docker image ls
+          docker rm -f myapp
           docker run --name myapp -d -p 80:8060 johnojss/myapp:${{ github.run_number }}
