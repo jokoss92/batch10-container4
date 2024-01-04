@@ -1,0 +1,22 @@
+name: CICD Github Actions using Docker
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-push:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: list all files
+      run: ls -latr
+    - name: Check go version
+      run: go version
+    - name: Run unit test 
+      run: go test -v ./...
+    - name: Build and push
+      uses: docker/build-push-action@v5
+      with:
+        push: false
+        tags: johnojss/myapp:${{ github.run_number }}
